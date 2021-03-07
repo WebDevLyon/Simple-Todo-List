@@ -1,0 +1,9 @@
+body {
+	margin: 0;
+}
+.container {
+	margin: auto;
+	max-width: 425px;
+	height: 100vh;
+	background-color: grey;
+}

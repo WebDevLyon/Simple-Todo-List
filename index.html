@@ -9,14 +9,36 @@
 	</head>
 	<body>
 		<div class="container">
-			<header>
-				<div id="searchBar"></div>
-				<div>
-					<div id="dateJ"></div>
-					<div id="jour"></div>
+			<header class="header">
+				<div class="header__wrapper">
+					<div class="searchBar">
+						<label for="searchBar">Search</label>
+						<input
+							id="searchBar"
+							type="text"
+							placeholder="Search"
+						/>
+					</div>
+					<div class="date">
+						<div class="dateJ">
+							<div class="dateJ__jour-number"></div>
+							<div>
+								<div class="dateJ__mois"></div>
+								<div class="dateJ__annee"></div>
+							</div>
+						</div>
+						<div class="jour"></div>
+					</div>
 				</div>
 			</header>
-			<main></main>
+			<main class="list">
+				<div class="list__wrapper">
+					<div class="list__todo">
+						<!--car exemple-->
+					</div>
+					<button class="btn-add">+</button>
+				</div>
+			</main>
 			<footer></footer>
 		</div>
 		<!--Jquery-->
@@ -25,12 +47,12 @@
 			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			crossorigin="anonymous"
 		></script>
-		<!--Script-->
+		<!--Import Jquery en local si CDN en erreur-->
 		<script>
 			if (typeof jQuery == "undefined") {
 				document.writeln(
 					'<script type="text/javascript" src="./js/jquery-3.6.0.js"><\/script>'
-				);
+				)
 			}
 		</script>
 		<script src="./js/main.js"></script>

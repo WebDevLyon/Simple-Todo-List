@@ -24,20 +24,11 @@ $(function () {
 		"Samedi",
 	]
 	let dateDuJour = new Date()
-	
-	// !Liste de taches pour les tests
-	let todos = [
-		{
-			nom: "tache 1",
-			description: "faire ceci",
-			date: new Date("2021-03-09T13:00:00"),
-		},
-		{
-			nom: "tache 2",
-			description: "faire cela",
-			date: new Date("2021-03-09T12:00:00"),
-		},
-	]
+	let start =dateDuJour.getFullYear()+'-'+('0'+(dateDuJour.getMonth()+1)).slice(-2)+'-'+('0'+dateDuJour.getDate()).slice(-2)
+	let delta = 3
+	let end =dateDuJour.getFullYear()+'-'+('0'+(dateDuJour.getMonth()+1)).slice(-2)+'-'+('0'+(dateDuJour.getDate()+delta)).slice(-2)
+	console.log(end);
+	let todos = []
 
 	// Affichage du jour dans le header
 	$(".dateJ__jour-number").text(dateDuJour.getDate())
@@ -94,7 +85,37 @@ $(function () {
 		MAJList()
 	})
 
+	// Création des Events
+	function getTodos (start, end ) {
+		const events = []
+		const min = new Date(`${start}T00:00:00`)
+		console.log(min);
+		const max = new Date(`${end}T23:59:59`)
+		console.log(max);
+		const days = (max.getTime() - min.getTime()) / 86400000
+		console.log(days);
+		function rnd (a, b) {
+			return Math.floor((b - a + 1) * Math.random()) + a
+		}
+		const eventCount = rnd(days, days + 20)
+		console.log(eventCount);
+		for (let i = 0; i < eventCount; i++) {
+			const firstTimestamp = rnd(min.getTime(), max.getTime())
+			const first = new Date(firstTimestamp - (firstTimestamp % 900000))
+
+			events.push({
+				nom: 'event '+i,
+				date: first,
+				description: 'description de la tâche '+i
+			})
+		}
+		todos = events
+		console.log(todos);
+	}
+	console.log(new Date().getFullYear());
 	// Fonctions à lancer au chargement
+	getTodos (start, end )
 	sortTodo()
 	MAJList()
+
 })
